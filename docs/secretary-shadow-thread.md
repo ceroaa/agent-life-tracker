@@ -9,6 +9,8 @@ A tool times out. A model call falls back. A human approval is needed. A coding 
 
 The result is not just lost context. It is lost responsibility.
 
+This is the hidden cost of one-shot agent tasks. A single invocation can make partial progress, but the continuation often belongs to a different tool, a different agent, a different session, or even a different platform. The work was not wrong. It was just not carried forward.
+
 ## 2. Bad solution: attention system takes over resources
 
 One tempting fix is to let the attention system become active. It detects stalled work, then schedules retries, changes priorities, calls tools, and competes with the mainline.
@@ -27,6 +29,10 @@ The Secretary Shadow Thread is a sidecar pattern:
 The secretary is deliberately passive. It stores the current focus, reminders, handoffs, and outcomes. It exposes concise context to the next human, agent, or tool.
 
 It does not own the system.
+
+In this sense, it is a life tracker for tasks. It does not make the task more important than the present moment. It simply records that the task is still alive, where it stopped, and what kind of actor should continue.
+
+Because the state is a small JSON file, the pattern can move across process boundaries. A local coding agent can leave a note for a cloud verifier. A command-line tool can leave a handoff for a browser-based agent. A platform-specific worker can expose compact context to a human operator without exporting the full runtime.
 
 ## 4. State model: current / pending_attentions / handoffs / archive
 
@@ -71,6 +77,10 @@ A user interface can call `status()` to show the current focus and pending remin
 
 An LLM prompt builder can call `format_handoff_context()` to pass compact state into the next session without exposing full metadata.
 
+One-shot agents can call `record_note()` before returning control, so another agent can continue from the last known status instead of restarting from scratch.
+
+Cross-platform systems can copy or mount the state file wherever the next actor runs. The tracker does not require the next actor to share the same framework, provider, or execution environment.
+
 ## 7. Limitations
 
 This pattern is not a durable workflow engine. It does not enforce exactly-once execution. It does not resolve conflicts between multiple active controllers. It does not replace an audit log, database, message queue, scheduler, or agent framework.
@@ -82,4 +92,3 @@ It is a small continuity layer. Its job is to keep unfinished intentions visible
 This project was inspired by experiments in Xiaoyu City, but it does not include Xiaoyu City's private runtime, memory, identity layer, prompts, API keys, task logs, or internal control system.
 
 It only publishes a general-purpose sidecar pattern for tracking unfinished work in long-running agents.
-

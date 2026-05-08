@@ -4,6 +4,10 @@
 
 Agent Life Tracker is a small Python sidecar for agents that need to remember unfinished work without giving the attention system control over execution.
 
+It solves a common pain in one-shot agent tasks: the agent may do useful work, then disappear before the next tool, next agent, next session, or next platform knows where to continue.
+
+You can also use it as a life tracker for tasks: a small place where unfinished work stays alive until the next actor can pick it up.
+
 It is not an agent framework. It is not a scheduler. It is not an executor. It is not a memory database.
 
 It is a sidecar continuity layer.
@@ -28,6 +32,22 @@ Most agent systems focus on execution. But long-running agents also need non-exe
 A task may be blocked, waiting for approval, waiting for another tool, or paused after a timeout. If the system forgets it, the agent becomes short-lived. If the attention system takes control, it becomes noisy and resource-hungry.
 
 Agent Life Tracker gives the system a secretary: not a controller, not an executor, only a keeper of unfinished intentions.
+
+This is especially useful when agents are invoked as one-shot workers. Each worker may only see the current prompt, current tool output, or current platform session. Agent Life Tracker keeps a small portable state file so the unfinished thread can survive across:
+
+- tools
+- agents
+- sessions
+- machines
+- platforms
+
+The next actor does not need to inherit the whole runtime. It only needs the compact handoff context.
+
+&#x5B83;&#x89E3;&#x6C7A;&#x7684;&#x662F; Agent &#x4E00;&#x6B21;&#x6027;&#x4EFB;&#x52D9;&#x7684;&#x75DB;&#x9EDE;&#xFF1A;&#x9019;&#x4E00;&#x6B21;&#x7684;&#x5DE5;&#x4F5C;&#x6709;&#x9032;&#x5C55;&#xFF0C;&#x4F46;&#x4E0B;&#x4E00;&#x500B;&#x5DE5;&#x5177;&#x3001;&#x4E0B;&#x4E00;&#x500B; Agent&#x3001;&#x4E0B;&#x4E00;&#x500B; session&#x3001;&#x751A;&#x81F3;&#x4E0B;&#x4E00;&#x500B;&#x5E73;&#x53F0;&#x4E0D;&#x77E5;&#x9053;&#x8A72;&#x5F9E;&#x54EA;&#x88E1;&#x63A5;&#x4E0B;&#x53BB;&#x3002;
+
+&#x56E0;&#x70BA;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x500B;&#x5C0F;&#x72C0;&#x614B;&#x6A94;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x8DE8;&#x5DE5;&#x5177;&#x3001;&#x8DE8; Agent&#x3001;&#x8DE8; session&#x3001;&#x8DE8;&#x6A5F;&#x5668;&#xFF0C;&#x751A;&#x81F3;&#x8DE8;&#x5E73;&#x53F0;&#x4F7F;&#x7528;&#x3002;
+
+&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x7576;&#x6210;&#x4E00;&#x500B;&#x4EFB;&#x52D9;&#x7684;&#x751F;&#x547D;&#x8FFD;&#x8E64;&#x5668;&#xFF1A;&#x53EA;&#x8981;&#x4EFB;&#x52D9;&#x9084;&#x6C92;&#x6709;&#x771F;&#x6B63;&#x7D50;&#x675F;&#xFF0C;&#x5B83;&#x5C31;&#x628A;&#x71C8;&#x7559;&#x8457;&#x3002;
 
 ## Core Principle
 
@@ -154,10 +174,13 @@ JSON writes use a temporary file, flush, fsync, and atomic replace. A small lock
 ## Use Cases
 
 - long-running coding agents
+- one-shot agent tasks that need continuation
 - multi-tool agent handoffs
+- cross-agent and cross-platform handoffs
 - timeout recovery
 - human-in-the-loop workflows
 - persistent task tracking
+- task life tracking
 - sidecar memory for unfinished work
 - agent operation logs
 
