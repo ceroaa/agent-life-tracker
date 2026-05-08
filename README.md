@@ -1,4 +1,4 @@
-﻿# Agent Life Tracker
+# Agent Life Tracker
 
 ## Secretary Shadow Thread for Long-Running Agents
 
@@ -13,10 +13,14 @@ Tools may fail.
 Context may reset.  
 But unfinished intentions should not die.
 
-隞餃??臭誑?怠??? 
-撌亙?臭誑憭望??? 
-銝??隞仿?蝵柴? 
-雿摰?????閰脫香鈭～?
+&#x4EFB;&#x52D9;&#x53EF;&#x4EE5;&#x66AB;&#x505C;&#x3002;
+
+&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x5931;&#x6557;&#x3002;
+
+&#x4E0A;&#x4E0B;&#x6587;&#x53EF;&#x4EE5;&#x91CD;&#x7F6E;&#x3002;
+
+&#x4F46;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x610F;&#x5716;&#x4E0D;&#x8A72;&#x6B7B;&#x4EA1;&#x3002;
+
 ## Why
 
 Most agent systems focus on execution. But long-running agents also need non-executive continuity.
@@ -25,12 +29,6 @@ A task may be blocked, waiting for approval, waiting for another tool, or paused
 
 Agent Life Tracker gives the system a secretary: not a controller, not an executor, only a keeper of unfinished intentions.
 
-Agent Life Tracker ?臭??策?瑟? Agent ?函??餈質馱?具?
-摰?霈?Agent 霈??游?? 
-摰?霈釣??蝟餌絞???? 
-摰?霈??霈?隤踹漲?具?
-摰??隞嗡?嚗??芸?????????
-隞餃??臭誑?怠??極?瑕隞?timeout??銝??臭誑?????芸???銝餌?銝?閰脫?憭晞?
 ## Core Principle
 
 Attention detects.  
@@ -38,10 +36,14 @@ Secretary remembers.
 Mainline decides.  
 Tools execute.
 
-瘜冽???鞎祉?整? 
-蝘鞎痊閮??? 
-銝餌?鞎痊瘙箇??? 
-撌亙鞎痊?瑁???
+&#x6CE8;&#x610F;&#x529B;&#x8CA0;&#x8CAC;&#x767C;&#x73FE;&#x3002;
+
+&#x79D8;&#x66F8;&#x8CA0;&#x8CAC;&#x8A18;&#x4F4F;&#x3002;
+
+&#x4E3B;&#x7DDA;&#x8CA0;&#x8CAC;&#x6C7A;&#x7B56;&#x3002;
+
+&#x5DE5;&#x5177;&#x8CA0;&#x8CAC;&#x57F7;&#x884C;&#x3002;
+
 ## What It Tracks
 
 - current focus
@@ -165,15 +167,18 @@ The secretary is not the brain.
 The secretary is not the hand.  
 The secretary is the notebook that stays open when everything else changes.
 
-蝘銝憭扯?? 
-蝘銝?? 
-蝘?舀??镼輸霈?隞亙?嚗??嗆?獢???祉?閮?
+&#x79D8;&#x66F8;&#x4E0D;&#x662F;&#x5927;&#x8166;&#x3002;
+
+&#x79D8;&#x66F8;&#x4E0D;&#x662F;&#x624B;&#x3002;
+
+&#x79D8;&#x66F8;&#x662F;&#x6240;&#x6709;&#x6771;&#x897F;&#x90FD;&#x8B8A;&#x4E86;&#x4EE5;&#x5F8C;&#xFF0C;&#x4ECD;&#x7136;&#x6504;&#x958B;&#x5728;&#x684C;&#x4E0A;&#x7684;&#x90A3;&#x672C;&#x7B46;&#x8A18;&#x3002;
+
 ## Origin
 
 This project was inspired by experiments in Xiaoyu City, but it does not include Xiaoyu City's private runtime, memory, identity layer, prompts, API keys, task logs, or internal control system.
 
 It only publishes a general-purpose sidecar pattern for tracking unfinished work in long-running agents.
 
-?砍極?瑟鞊∟撠???Agent 撖阡?銝剔?銝?璅∪?嚗?銝??怠??典??祇????蝘?閮???頨思遢撅扎?? prompt??? API key???隞餃?蝝????折?批??
-餈??芷?皞??撠極?瘀??其?餈質馱?瑟? Agent ?摰?隞餃?????撌亙鈭斗??
+&#x672C;&#x5DE5;&#x5177;&#x62BD;&#x8C61;&#x81EA;&#x5C0F;&#x96E8;&#x57CE;&#x9577;&#x671F; Agent &#x5BE6;&#x9A57;&#x4E2D;&#x7684;&#x4E00;&#x500B;&#x901A;&#x7528;&#x6A21;&#x5F0F;&#xFF0C;&#x4F46;&#x4E0D;&#x5305;&#x542B;&#x5C0F;&#x96E8;&#x57CE;&#x672C;&#x9AD4;&#x3001;&#x4E0D;&#x5305;&#x542B;&#x79C1;&#x6709;&#x8A18;&#x61B6;&#x3001;&#x4E0D;&#x5305;&#x542B;&#x8EAB;&#x4EFD;&#x5C64;&#x3001;&#x4E0D;&#x5305;&#x542B; prompt&#x3001;&#x4E0D;&#x5305;&#x542B; API key&#x3001;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x52D9;&#x7D00;&#x9304;&#x3001;&#x4E0D;&#x5305;&#x542B;&#x5167;&#x90E8;&#x63A7;&#x5236;&#x93C8;&#x3002;
 
+&#x9019;&#x91CC;&#x53EA;&#x958B;&#x6E90;&#x4E00;&#x500B;&#x901A;&#x7528;&#x5C0F;&#x5DE5;&#x5177;&#xFF1A;&#x7528;&#x4F86;&#x8FFD;&#x8E64;&#x9577;&#x671F; Agent &#x7684;&#x672A;&#x5B8C;&#x6210;&#x4EFB;&#x52D9;&#x3001;&#x63D0;&#x9192;&#x8207;&#x5DE5;&#x5177;&#x4EA4;&#x63A5;&#x3002;
