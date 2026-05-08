@@ -1,0 +1,35 @@
+﻿# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# secrets
+.env
+*.env
+*.key
+*.pem
+secrets/
+credentials/
+tokens/
+
+# private/runtime states
+state/
+runtime/
+logs/
+memory/
+rag_index/
+backups/
+.agent_life_tracker/state.json
+
+# Xiaoyu City private files - do not publish
+g5_*.json
+milestones/
+protocols/
+RAIN/
+SP2/
+SP3/
+SP4/
